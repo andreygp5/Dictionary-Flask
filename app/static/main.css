@@ -1,0 +1,28 @@
+.add-form {
+    margin-top: 100px;
+}
+.all-words {
+    margin-top: 100px;
+}
+table {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+th {
+    height: 30px;
+    text-align: center;
+}
+td {
+    height: 40px;
+    padding-left: 10px;
+}
+.clear-btn {
+    margin-top: 10px;
+}
+.del_btn {
+    margin-top: 10px;
+}
+.check-box-word{
+    margin-right: 9px;
+}

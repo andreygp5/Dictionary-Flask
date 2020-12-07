@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All words
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-2">
+            <form method="POST">
+                <button type="submit" class="btn btn-outline-danger clear-btn" name="btn" value="clear">
+                    Clear table
+                </button>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-outline-danger del_btn" name="btn" value="delete_words">
+                Delete words
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <table border="1">
+                <tr>
+                    <th>
+                        English
+                    </th>
+                    <th>
+                        Russian
+                    </th>
+                    <th>
+                        <input type="checkbox" onClick="toggle(this)">
+                    </th>
+                </tr>
+                {% for word in words %}
+                <tr>
+                    <td>
+                        <h5>{{ word.eng_word }}</h5>
+                    </td>
+                    <td>
+                        <h5>{{ word.ru_word }}</h5>
+                    </td>
+                    <div class="form-group form-check">
+                        <td width='20'>
+                            <input type="checkbox" class="check-box-word" name="checked_words"
+                                value="{{ word.eng_word }}">
+                        </td>
+                    </div>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}
