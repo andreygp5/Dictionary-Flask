@@ -33,10 +33,10 @@ All words
                         Russian
                     </th>
                     <th>
-                        <input type="checkbox" onClick="toggle(this)">
+                        <input type="checkbox" onClick="toggle()">
                     </th>
                 </tr>
-                {% for word in words %}
+                {% for word in words.items %}
                 <tr>
                     <td>
                         <h5>{{ word.eng_word }}</h5>
@@ -53,6 +53,39 @@ All words
                 </tr>
                 {% endfor %}
             </table>
+            <ul class="pagination">
+                <li class="page-item {% if words.has_prev == False %} disabled {% endif %}">
+                    <a class="page-link" href="./?page={{ words.prev_num }}">Previous</a>
+                </li>
+                <li class="page-item {% if words.page == 1 %} disabled {% endif %}">
+                    <a class="page-link" href="./?page=1">1</a>
+                </li>
+
+                {% if words.page > 2 %}
+                <li class="page-item {% if words.page == 1 %} disabled {% endif %}">
+                    <a class="page-link" href="#">...</a>
+                </li>
+                {% endif %}
+
+                {% if words.page > 1 and words.page < words.pages %}
+                <li class="page-item {% if words.page == 1 %} disabled {% endif %}">
+                    <a class="page-link" href="./?page=1">{{ words.page }}</a>
+                </li>
+                {% endif %}
+
+                {% if words.page < words.pages-1 %}
+                <li class="page-item {% if words.page == 1 %} disabled {% endif %}">
+                    <a class="page-link" href="#">...</a>
+                </li>
+                {% endif %}
+
+                <li class="page-item {% if words.page == words.pages %} disabled {% endif %}">
+                    <a class="page-link" href="./?page={{ words.pages }}">{{ words.pages }}</a>
+                </li>
+                <li class="page-item {% if words.has_next == False %} disabled {% endif %}">
+                    <a class="page-link" href="./?page={{ words.next_num }}">Next</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

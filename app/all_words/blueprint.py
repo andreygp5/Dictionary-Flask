@@ -2,7 +2,7 @@ from flask import Blueprint
 
 from flask import render_template, request
 import sys
-sys.path.append(r"C:\Users\andre\Desktop\eng_study\app")
+# sys.path.append(r"C:\Users\andre\Desktop\clone_test\English-Study-Flask\app")
 from models import Words
 from app import db
 import view
@@ -23,6 +23,8 @@ def index():
                 delete_word = Words.query.filter_by(eng_word=word).first()
                 db.session.delete(delete_word)
                 db.session.commit()
-    words = Words.query.all()
-    words.reverse()
+    
+    page = request.args.get('page', 1, type=int)
+    words = Words.query.paginate(page=page)
+    
     return render_template('all_words/index.html', words=words)

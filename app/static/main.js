@@ -1,8 +1,14 @@
+function toggle() {
 
-
-function toggle(source) {
-    checkboxes = document.getElementsByName('checked_words');
-    for (var checkbox in checkboxes) {
-        checkbox.checked = source.checked;
+    inputs = document.getElementsByClassName("check-box-word");
+    
+    for (var i = 0; i < inputs.length; i++){
+        if (inputs[i].checked){
+            inputs[i].checked = false;
+        }
+        else {
+            inputs[i].checked = true;
+        }
     }
+
 }
