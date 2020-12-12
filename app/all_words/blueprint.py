@@ -1,8 +1,6 @@
 from flask import Blueprint
-
 from flask import render_template, request
-import sys
-# sys.path.append(r"C:\Users\andre\Desktop\clone_test\English-Study-Flask\app")
+
 from models import Words
 from app import db
 import view

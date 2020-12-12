@@ -1,5 +1,5 @@
 from app import app
-from flask import redirect, url_for
+from flask import url_for, redirect
 
 
 @app.route('/')

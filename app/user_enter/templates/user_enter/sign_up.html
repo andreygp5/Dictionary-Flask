@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sign up
+{% endblock %}
+
+{% block content %}
+<div class="container add-form">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <form method="POST">
+        <div class="mb-3">
+          <label for="login" class="form-label">Email address</label>
+          <input type="email" class="form-control email-sign-up" id="login" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control password-sign-up" name="password" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input class="form-check-input terms-agree" type="checkbox" value="" id="terms-agree" required>
+          <label class="form-check-label" for="terms-agree">Agree with our Terms</label>
+        </div>
+        <button onclick="check_email()" type="button" class="btn btn-primary valid-email-btn" id="sign-up-btn-first">
+          Sign up
+        </button>
+        <div class="verification">
+          <div class="mb-3">
+            <p>Auth code was sent to your email</p>
+            <label for="password" class="form-label">Code</label>
+            <input id="code" type="text" class="form-control" name="code" required>
+          </div>
+          <div class="mb-3">
+            <button onclick="check_code()" type="button" class="btn btn-success valid-code-btn" id="sign-up-btn-second">
+              Confirm
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div id="status"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

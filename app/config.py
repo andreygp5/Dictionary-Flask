@@ -1,10 +1,11 @@
 import os
 from dotenv import load_dotenv
+
+
 path = os.path.dirname(__file__)
 dotenv_path = os.path.join(path, '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
-
 
 class Config:
     DEBUG = "True"

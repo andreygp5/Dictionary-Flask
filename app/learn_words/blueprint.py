@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, g
+from flask_login import login_required
 from models import Words, LearningWords
+
 from app import db
 
 
@@ -15,6 +17,7 @@ def generate_learn_db(learning_words):
         db.session.commit()
 
 @learn_words.route('/', methods=('GET', 'POST'))
+@login_required
 def index():
     if request.method == 'POST':
         learning_words = request.form.getlist('checked_words')

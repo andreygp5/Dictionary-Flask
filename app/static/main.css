@@ -26,3 +26,6 @@ td {
 .check-box-word{
     margin-right: 9px;
 }
+.verification{
+    display: none;
+}
