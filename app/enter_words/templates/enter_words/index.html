@@ -6,20 +6,20 @@ Entering words
 
 {% block content %}
 <div class="container add-form">
-    <div class="row justify-content-center">
-        <div class="col-6">
-            <form method="POST">
-                <div class="form-group">
-                  <label for="english_word">English word</label>
-                  <input type="text" class="form-control" id="english_word" name='english_word'>
-                </div>
-                <div class="form-group">
-                  <label for="russian_translate">Russian Translate</label>
-                  <input type="text" class="form-control" id="russian_translate" name='russian_translate'>
-                </div>
-                <button type="submit" class="btn btn-primary">Add</button>
-              </form>
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <form method="POST">
+        <div class="mb-3">
+          <label for="english_word" class="form-label">English word</label>
+          <input type="text" class="form-control" id="english_word" name='english_word'>
         </div>
+        <div class="mb-3">
+          <label for="russian_translate" class="form-label">Russian Translate</label>
+          <input type="text" class="form-control" id="russian_translate" name='russian_translate'>
+        </div>
+        <button type="submit" class="btn btn-success">Add</button>
+      </form>
     </div>
+  </div>
 </div>
 {% endblock %}

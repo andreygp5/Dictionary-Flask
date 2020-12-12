@@ -11,11 +11,13 @@ table {
 }
 th {
     height: 30px;
-    text-align: center;
 }
 td {
     height: 40px;
     padding-left: 10px;
+}
+.check-all {
+    text-align: left;
 }
 .clear-btn {
     margin-top: 10px;

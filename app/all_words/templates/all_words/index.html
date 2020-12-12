@@ -19,12 +19,9 @@ All words
             </button>
         </div>
     </div>
-</div>
-</div>
-<div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
-            <table border="1">
+            <table border="2" class="table">
                 <tr>
                     <th>
                         English
@@ -33,7 +30,7 @@ All words
                         Russian
                     </th>
                     <th>
-                        <input type="checkbox" onClick="toggle()">
+                        <input id="check-all" type="checkbox" onClick="toggle()">
                     </th>
                 </tr>
                 {% for word in words.items %}
@@ -44,12 +41,10 @@ All words
                     <td>
                         <h5>{{ word.ru_word }}</h5>
                     </td>
-                    <div class="form-group form-check">
-                        <td width='20'>
-                            <input type="checkbox" class="check-box-word" name="checked_words"
-                                value="{{ word.eng_word }}">
-                        </td>
-                    </div>
+                    <td width='20'>
+                        <input type="checkbox" class="check-box-word" name="checked_words"
+                            value="{{ word.eng_word }}">
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
@@ -88,6 +83,7 @@ All words
             </ul>
         </div>
     </div>
+</div>
 </div>
 </form>
 {% endblock %}
