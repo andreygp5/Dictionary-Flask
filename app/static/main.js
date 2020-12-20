@@ -59,3 +59,45 @@ function check_code() {
         document.getElementById("status").innerHTML = "4 значное число";
     }
 }
+
+function change_default_dict(dict){
+    var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("status").innerHTML = this.responseText;
+            }
+        }
+        xhr.open('POST', '/enter-words/change-default-dict', true);
+        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        xhr.send("dict=" + dict);
+}
+
+function create_new_dict(){
+    dict_name = document.getElementById("dict-name").value
+    var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.location.reload();
+            }
+        }
+        xhr.open('POST', '/user-enter/create-new-dict', true);
+        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        xhr.send("dict-name=" + dict_name);
+}
+
+function delete_dict(dict){
+    if (dict != "All Words") {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.location.reload();
+            }
+        }
+        xhr.open('POST', '/user-enter/delete-dict', true);
+        xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        xhr.send("dict-name=" + dict);
+    }
+    else {
+        alert("You can not delete base dictionary")
+    }
+}
