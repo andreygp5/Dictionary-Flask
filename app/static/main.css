@@ -31,3 +31,18 @@ td {
 .verification{
     display: none;
 }
+.login-msg{
+    margin-top: 10px;
+}
+.dicts_list{
+    margin-top: 40px;
+}
+.dict_names{
+    text-decoration: none;   
+}
+.dict_names_box{
+    margin-top: 10px;
+}
+.create-btn{
+    margin-top: 10px;
+}

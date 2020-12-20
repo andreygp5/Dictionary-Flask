@@ -6,46 +6,17 @@ Choose what to learn
 
 {% block content %}
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-2">
-            <form method="POST">
-                <button type="submit" class="btn btn-outline-success clear-btn" name="btn" value="clear">
-                    Start learning
-                </button>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center dicts_list">
         <div class="col-6">
-            <table border="2" class="table">
-                <tr>
-                    <th>
-                        English
-                    </th>
-                    <th>
-                        Russian
-                    </th>
-                    <th>
-                        <input type="checkbox" onClick="toggle(this)">
-                    </th>
-                </tr>
-                {% for word in words %}
-                <tr>
-                    <td>
-                        <h5>{{ word.eng_word }}</h5>
-                    </td>
-                    <td>
-                        <h5>{{ word.ru_word }}</h5>
-                    </td>
-                    <td width='20'>
-                        <input type="checkbox" class="check-box-word" name="checked_words" value="{{ word.eng_word }}">
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
+            <h3>Choose Dictionary</h3>
+            {% for dict in dicts %}
+            <ul class="list-group dict_names_box">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('show_words.index', dict_name=dict.dict_name, page=1) }}" class="dict_names">{{ dict.dict_name }}</a>
+                </li>
+            </ul>
+            {% endfor %}
         </div>
     </div>
 </div>
-</form>
 {% endblock %}

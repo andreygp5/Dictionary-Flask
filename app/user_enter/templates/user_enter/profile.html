@@ -6,18 +6,48 @@ Profile
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <h3>Your dictionaries</h3>
-            {% for dict in dicts %}
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <a href="#">dict.name</a>
-                  <span class="badge bg-primary rounded-pill">dict.len_words</span>
-                </li>
-              </ul>
-            {% endfor %}
-        </div>
+  <div class="row justify-content-center dicts_list">
+    <div class="col-6">
+      <h3>Your dictionaries</h3>
+      {% for dict in dicts %}
+      <ul class="list-group dict_names_box">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="#" class="dict_names">{{ dict.dict_name }}</a>
+          <button type="button" class="btn btn-danger"
+            onclick="delete_dict(dict='{{ dict.dict_name }}')">Delete</button>
+        </li>
+      </ul>
+      {% endfor %}
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-success create-btn" data-bs-toggle="modal" data-bs-target="#new-dict">Create new
+        Dictionary</button>
+      <!-- Modal -->
+      <div class="modal fade" id="new-dict" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Creating</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="dict-name" class="col-form-label">Dictionary name</label>
+                  <input type="text" class="form-control" id="dict-name" required>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="create_new_dict()">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

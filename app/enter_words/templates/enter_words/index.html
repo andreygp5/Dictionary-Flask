@@ -17,8 +17,33 @@ Entering words
           <label for="russian_translate" class="form-label">Russian Translate</label>
           <input type="text" class="form-control" id="russian_translate" name='russian_translate'>
         </div>
-        <button type="submit" class="btn btn-success">Add</button>
+        <div class="mb-3">
+          <div class="d-flex justify-content-start">
+            <div class="me-auto">
+              <button type="submit" class="btn btn-success">Add</button>
+            </div>
+            <div>
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Change default dictionary
+              </button>
+              <ul class="dropdown-menu">
+                {% for dict in dictionaries %}
+                <li><a class="dropdown-item" href="#"
+                    onclick="change_default_dict(dict='{{dict.dict_name}}')">{{dict.dict_name}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
       </form>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div id="status"></div>
     </div>
   </div>
 </div>

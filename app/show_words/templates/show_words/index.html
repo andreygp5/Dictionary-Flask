@@ -49,11 +49,14 @@ All words
                 {% endfor %}
             </table>
             <ul class="pagination">
-                <li class="page-item {% if words.has_prev == False %} disabled {% endif %}">
-                    <a class="page-link" href="./?page={{ words.prev_num }}">Previous</a>
+                {% if words.has_prev %}
+                <li class="page-item">
+                    <a class="page-link" 
+                    href="{{ url_for('show_words.index', dict_name=dict_name, page=words.prev_num) }}">Previous</a>
                 </li>
+                {% endif %}
                 <li class="page-item {% if words.page == 1 %} disabled {% endif %}">
-                    <a class="page-link" href="./?page=1">1</a>
+                    <a class="page-link" href="{{ url_for('show_words.index', dict_name=dict_name, page=1) }}">1</a>
                 </li>
 
                 {% if words.page > 2 %}
@@ -62,9 +65,9 @@ All words
                 </li>
                 {% endif %}
 
-                {% if words.page > 1 and words.page < words.pages %}
+                {% if words.page > 1 and words.page < words.pages and words.has_next %}
                 <li class="page-item {% if words.page == 1 %} disabled {% endif %}">
-                    <a class="page-link" href="./?page=1">{{ words.page }}</a>
+                    <a class="page-link" href="#">{{ words.page }}</a>
                 </li>
                 {% endif %}
 
@@ -73,13 +76,14 @@ All words
                     <a class="page-link" href="#">...</a>
                 </li>
                 {% endif %}
-
+                {% if words.has_next %}
                 <li class="page-item {% if words.page == words.pages %} disabled {% endif %}">
-                    <a class="page-link" href="./?page={{ words.pages }}">{{ words.pages }}</a>
+                    <a class="page-link" href="{{ url_for('show_words.index', dict_name=dict_name, page=words.pages) }}">{{ words.pages }}</a>
                 </li>
                 <li class="page-item {% if words.has_next == False %} disabled {% endif %}">
-                    <a class="page-link" href="./?page={{ words.next_num }}">Next</a>
+                    <a class="page-link" href="{{ url_for('show_words.index', dict_name=dict_name, page=words.next_num) }}">Next</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
