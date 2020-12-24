@@ -24,10 +24,10 @@ All words
             <table border="2" class="table">
                 <tr>
                     <th>
-                        English
+                        Word
                     </th>
                     <th>
-                        Russian
+                        Translation
                     </th>
                     <th>
                         <input id="check-all" type="checkbox" onClick="toggle()">
@@ -36,14 +36,14 @@ All words
                 {% for word in words.items %}
                 <tr>
                     <td>
-                        <h5>{{ word.eng_word }}</h5>
+                        <h5>{{ word.base_word }}</h5>
                     </td>
                     <td>
-                        <h5>{{ word.ru_word }}</h5>
+                        <h5>{{ word.translation_word }}</h5>
                     </td>
                     <td width='20'>
                         <input type="checkbox" class="check-box-word" name="checked_words"
-                            value="{{ word.eng_word }}">
+                            value="{{ word.base_word }}">
                     </td>
                 </tr>
                 {% endfor %}

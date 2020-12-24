@@ -20,7 +20,7 @@ def index(dict_name, page):
         if button == 'delete_words':
             delete_words = request.form.getlist('checked_words')
             for word in delete_words:
-                delete_word = Word.query.filter_by(eng_word=word).first()
+                delete_word = Word.query.filter_by(base_word=word).first()
                 db.session.delete(delete_word)
                 db.session.commit()
     
