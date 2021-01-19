@@ -17,12 +17,12 @@ def index():
     dictionaries = Dictionary.query.filter_by(user_id=user.id)
 
     if request.method == 'POST':
-        english_word = request.form['english_word']
-        russian_translate = request.form['russian_translate']
+        base_word = request.form['base_word']
+        translation_word = request.form['translation_word']
 
         user = User.query.filter_by(email=user_email).first()
 
-        word = Word(eng_word=english_word.lower().strip(), ru_word=russian_translate.lower().strip())
+        word = Word(base_word=base_word.lower().strip(), translation_word=translation_word.lower().strip())
         dict_to_add = Dictionary.query.filter_by(user_id=user.id, dict_name=user.default_dict).first()
         dict_to_add.words.append(word)
         db.session.add(dict_to_add)

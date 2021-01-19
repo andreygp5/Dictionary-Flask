@@ -47,8 +47,8 @@ class Dictionary(db.Model):
 class Word(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    eng_word = db.Column(db.String(100), nullable=False)
-    ru_word = db.Column(db.String(100), nullable=False)
+    base_word = db.Column(db.String(100), nullable=False)
+    translation_word = db.Column(db.String(100), nullable=False)
     add_time = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
 
@@ -56,7 +56,7 @@ class Word(db.Model):
         super().__init__(*args, **kwargs)
 
     def __repr__(self):
-        return '{0} - {1}'.format(self.eng_word, self.ru_word)
+        return '{0} - {1}'.format(self.base_word, self.translation_word)
 
 # db.create_all()
 
