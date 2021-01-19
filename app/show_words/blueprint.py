@@ -12,10 +12,14 @@ show_words = Blueprint('show_words', __name__, template_folder='templates')
 @show_words.route('/<string:dict_name>?<int:page>', methods=('POST', 'GET'))
 @login_required
 def index(dict_name, page):
+
+    user = User.query.filter_by(email=current_user.id).first()
+    dictionary = Dictionary.query.filter_by(user_id=user.id, dict_name=dict_name).first()
+
     if request.method == 'POST':
         button = request.form['btn']
         if button == 'clear':
-            Word.query.delete()
+            dictionary.query.delete()
             db.session.commit()
         if button == 'delete_words':
             delete_words = request.form.getlist('checked_words')
@@ -24,8 +28,6 @@ def index(dict_name, page):
                 db.session.delete(delete_word)
                 db.session.commit()
     
-    user = User.query.filter_by(email=current_user.id).first()
-    dictionary = Dictionary.query.filter_by(user_id=user.id, dict_name=dict_name).first()
     words = dictionary.words
     words = words.paginate(page=page)
     
